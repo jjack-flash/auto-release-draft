@@ -16,4 +16,4 @@ jobs:
       - name: Restore the dependencies
         run: npm ci
       - name: Build
-        run: rpm run all
+        run: npm run all
