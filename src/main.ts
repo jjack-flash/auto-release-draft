@@ -2,6 +2,7 @@ import * as core from '@actions/core'
 import * as event from './event'
 import * as version from './version'
 import * as git from './git'
+import * as github from './github'
 
 export async function run(): Promise<void> {
 
@@ -18,7 +19,7 @@ export async function run(): Promise<void> {
 
     core.setOutput('release-url', releaseUrl)
   } catch (error) {
-    
+
     core.setFailed(error.message)
   }
 }
