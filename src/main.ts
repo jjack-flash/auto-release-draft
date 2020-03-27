@@ -4,7 +4,10 @@ import * as version from './version'
 import * as git from './git'
 
 export async function run(): Promise<void> {
+
   try {
+    const token = core.getInput('repo-token')
+    
     const tag = event.getCreatedTag()
 
     if (tag && version.isSemVer(tag)) {
