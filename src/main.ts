@@ -6,17 +6,19 @@ import * as git from './git'
 export async function run(): Promise<void> {
 
   try {
+
     const token = core.getInput('repo-token')
-    
     const tag = event.getCreatedTag()
+    let releaseUrl = ''
 
     if (tag && version.isSemVer(tag)) {
       const changelog = await git.getChangesIntroducedByTag(tag)
-
-      core.debug(`Detected changelog:\n${changelog}`)
+      releaseUrl = await github.createReleaseDraft(tag, token, changelog)
     }
-    core.setOutput('release-url', 'https://example.com')
+
+    core.setOutput('release-url', releaseUrl)
   } catch (error) {
+    
     core.setFailed(error.message)
   }
 }
