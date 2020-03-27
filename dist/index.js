@@ -311,7 +311,7 @@ function wait(milliseconds) {
             if (!isNaN(milliseconds)) {
                 setTimeout(() => resolve('done!'), milliseconds);                
             }
-            debug.message ('milliseconds not a number');
+            debug('milliseconds not a number');
             
         });
     });
