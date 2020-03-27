@@ -308,10 +308,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function wait(milliseconds) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(resolve => {
-            if (isNaN(milliseconds)) {
-                throw new Error('milliseconds not a number');
+            if (!isNaN(milliseconds)) {
+                setTimeout(() => resolve('done!'), milliseconds);                
             }
-            setTimeout(() => resolve('done!'), milliseconds);
+            debug.message ('milliseconds not a number');
+            
         });
     });
 }
